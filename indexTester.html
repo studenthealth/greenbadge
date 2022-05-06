@@ -1,3 +1,4 @@
+
 <html>
 <head>
     <style>
@@ -82,11 +83,11 @@
         function checkCookie() {
             let person = getCookie("username");
             if (person != "") {
-                alert("This website uses cookies to save your name, id number, and dob for your convience. If you want to change your saved name, clear your cookies by select the x at the top right. Welcome back " + person);
+                alert("This website uses cookies to save your name, id number, and dob for your convience. If you want to change your saved name, clear your cookies. Welcome back " + person);
                 document.getElementById("name").innerHTML =
                 person + " use they/them";
             } else {
-                alert("This website uses cookies to save your name, id number, and dob for your convience. If you want to change your saved name, clear your cookies by select the x at the top right.");
+                alert("This website uses cookies to save your name, id number, and dob for your convience. If you want to change your saved name, clear your cookies.");
                 person = prompt("Please enter your first & last name:","");
                 if (person != "" && person != null) {
                 setCookie("username", person, 30);
