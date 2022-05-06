@@ -77,6 +77,7 @@
             return "";
         }
         function checkCookie() {
+            alert("This website uses cookies to save your name, id number, and dob for your convience.");
             let person = getCookie("username");
             if (person != "") {
                 alert("Welcome again " + person);
@@ -88,24 +89,29 @@
                 setCookie("username", person, 30);
                 }
             }
-        }
-
-        function myFunction() {
-          let person = prompt("Enter your name:", "Mike Wizoaski");
-          if (person != null) {
-            document.getElementById("name").innerHTML =
-            person + " use they/them";
-          }
-          let DOB = prompt("Enter your DOB:", "Jan 12");
-            if (DOB != null) {
+            let DOB = getCookie("dob");
+            if (DOB != "") {
                 document.getElementById("dob").innerHTML =
                 DOB + "";
-        }
-        let id = prompt("ID:", "1823012");
-            if (id != null) {
+            } else {
+                DOB = prompt("Enter your DOB:", "Jan 12");
+                if (DOB != "" && DOB != null) {
+                setCookie("dob", DOB, 30);
+                }
+            }
+            let ID = getCookie("id");
+            if (ID != "") {
                 document.getElementById("id").innerHTML =
-                "#" + id;
+                "#" + ID;
+            } else {
+                ID = prompt("Enter your DOB:", "Jan 12");
+                if (ID != "" && ID != null) {
+                setCookie("id", ID, 30);
+                }
+            }
+            DATE()
         }
+        function DATE() {
         let date = prompt("Enter the date:", "6/7/2022");
             if (date != null) {
                 document.getElementById("date").innerHTML =
