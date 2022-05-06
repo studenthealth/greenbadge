@@ -79,7 +79,8 @@
         function checkCookie() {
             let user = getCookie("username");
             if (user != "") {
-                alert("Welcome again " + user);
+                document.getElementById("name").innerHTML =
+                person + " use they/them";
             } else {
                 user = prompt("Please enter your name:","");
                 if (user != "" && user != null) {
@@ -93,7 +94,6 @@
           if (person != null) {
             document.getElementById("name").innerHTML =
             person + " use they/them";
-            setCookie("field1", form.field1.value);
           }
           let DOB = prompt("Enter your DOB:", "Jan 12");
             if (DOB != null) {
@@ -112,7 +112,7 @@
         }
     }
     </script>
-    <div onload="checkCookie()">
+    <div>
         <bold>
         <img id="image" style="float: right;"  style="width: 50px; height: 50px;" src="./Clerance Badge_files/topButton.png">
         <h5 style="padding-left: 90px;">Clearance Status</h5> 
@@ -127,7 +127,7 @@
         <p id="id"></p>
         </h4>
         <div width="250px" height="250px">                                                              
-            <button onclick="myFunction()"><img style="max-width: 200px;" src="./Clerance Badge_files/BADGEPHOYO.jpeg" id="image"></button> 
+            <button onclick="checkCookie()"><img style="max-width: 200px;" src="./Clerance Badge_files/BADGEPHOYO.jpeg" id="image"></button> 
         <h6>
         This badge system is not applicable to employees                         
         <br> <br> <br>
