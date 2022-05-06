@@ -77,14 +77,15 @@
             return "";
         }
         function checkCookie() {
-            let user = getCookie("username");
-            if (user != "") {
+            let person = getCookie("username");
+            if (person != "") {
+                alert("Welcome again " + person);
                 document.getElementById("name").innerHTML =
                 person + " use they/them";
             } else {
-                user = prompt("Please enter your name:","");
-                if (user != "" && user != null) {
-                setCookie("username", user, 30);
+                person = prompt("Please enter your name:","");
+                if (person != "" && person != null) {
+                setCookie("username", person, 30);
                 }
             }
         }
