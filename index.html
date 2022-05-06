@@ -1,5 +1,6 @@
 <html>
 <head>
+
     <style>
         body{
             background-color: 00cd46;
@@ -22,6 +23,10 @@
             letter-spacing: 1px;
             display: inline;
 	    }
+        button{
+            background-color : inherit;
+            border-color: transparent;
+        }
         #textboxid
         {
             text-align: right;
@@ -47,27 +52,53 @@
             margin-left: auto;
             margin-right: auto;
         }
-
     </style>
 </head>
 <body>
     <div>
         <bold>
-            <img id="image" style="float: right;"  style="width: 50px; height: 50px;" src="./Clerance Badge_files/topButton.png">
-        <h5 style="padding-left: 90px;">Clearance Status</h5>                                                                       <!-- Clearance status            -->
-           
-        <h1>Cleared</h1>                                                                                <!-- Cleared                     -->
-        <h4 style="line-height:50%;"><input type="text" id="textboxid"/> 7:34 AM                                    <!-- Date & Time                 -->
-        <img id="image" src="./Clerance Badge_files/BADGEPHOYO.png">                                   <!-- Badge Photo                 -->
-        <div><input type="text" id="textboxid4"/>use they/them   </div>    <!-- Name & Pronouns             -->
-        <input type="text" id="textboxid3"/> <br>                                                 <!-- DOB                         -->
-        #<input type="text" id="textboxid2"/></h4>                                                  <!-- ID Number                   -->
+            <script>
+                function myFunction() {
+                  let person = prompt("Enter your name:", "Mike Wizoaski");
+                  if (person != null) {
+                    document.getElementById("name").innerHTML =
+                    person + " use they/them";
+                  }
+                  let DOB = prompt("Enter your DOB:", "Jan 12");
+                    if (DOB != null) {
+                        document.getElementById("dob").innerHTML =
+                        DOB + "";
+                }
+                let date = prompt("Enter the date:", "6/7/2022");
+                    if (date != null) {
+                        document.getElementById("date").innerHTML =
+                        date + " 7:34 AM ";
+                }
+                let id = prompt("Enter your student ID:", "1820482");
+                    if (id != null) {
+                        document.getElementById("id").innerHTML =
+                        "#" + id + "";
+                }
+            }
+            </script>
+        <img id="image" style="float: right;"  style="width: 50px; height: 50px;" src="./Clerance Badge_files/topButton.png">
+        <h5 style="padding-left: 90px;">Clearance Status</h5> 
+        <h1>Cleared</h1> 
+        <h4>
+        <p id="date"></p>
+        </h4> 
+        <img id="image" src="./Clerance Badge_files/BADGEPHOYO.png">  
+        <h4>
+        <p id="name"></p>
+        <p id="dob"></p>
+        <p id="id"></p>
+        </h4>
         <div width="250px" height="250px">                                                              
-        <img style="max-width: 200px;" src="./Clerance Badge_files/BADGEPHOYO.jpeg" id="image">         <!-- QR Code                     -->
-        <h6 style="line-height:90%"> 
-        This badge system is not applicable to employees                                                <!-- This badge...               -->
+            <button onclick="myFunction()"><img style="max-width: 200px;" src="./Clerance Badge_files/BADGEPHOYO.jpeg" id="image"></button> 
+        <h6>
+        This badge system is not applicable to employees                         
         <br> <br> <br>
-        Compliant with Standard Requirements                                                            <!-- Compliant with...           -->
+        Compliant with Standard Requirements  
         </h6>
         </bold>
     </div>
