@@ -1,0 +1,139 @@
+<html>
+<head>
+    <style>
+        body{
+            background-color: 00cd46;
+            font-size: 400%;
+            text-align: center;
+            font-family: sans-serif;
+            color: white;
+            line-height:50%
+        }
+        input {
+            background-color : inherit;
+            border-color: transparent;
+            color:white;
+            size: 10px;
+            overflow: hidden; 
+            height: 5rem;
+            font-size: 3.9rem;
+            font-family: sans-serif;
+            font-weight: 600;
+            letter-spacing: 1px;
+            display: inline;
+	    }
+        button{
+            background-color : inherit;
+            border-color: transparent;
+        }
+        #textboxid
+        {
+            text-align: right;
+            width: 350px;
+        }
+        #textboxid2
+        {
+            text-align: left;
+            width: 325px;
+        }
+        #textboxid3
+        {
+            text-align: center;
+            width: 250px;
+        }
+        #textboxid4
+        {
+            text-align: right;
+            width: 450px;
+        }
+        #image{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function setCookie(cname,cvalue,exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays*24*60*60*1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for(let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+        function checkCookie() {
+            let user = getCookie("username");
+            if (user != "") {
+                alert("Welcome again " + user);
+            } else {
+                user = prompt("Please enter your name:","");
+                if (user != "" && user != null) {
+                setCookie("username", user, 30);
+                }
+            }
+        }
+
+        function myFunction() {
+          let person = prompt("Enter your name:", "Mike Wizoaski");
+          if (person != null) {
+            document.getElementById("name").innerHTML =
+            person + " use they/them";
+            setCookie("field1", form.field1.value);
+          }
+          let DOB = prompt("Enter your DOB:", "Jan 12");
+            if (DOB != null) {
+                document.getElementById("dob").innerHTML =
+                DOB + "";
+        }
+        let id = prompt("ID:", "1823012");
+            if (id != null) {
+                document.getElementById("id").innerHTML =
+                "#" + id;
+        }
+        let date = prompt("Enter the date:", "6/7/2022");
+            if (date != null) {
+                document.getElementById("date").innerHTML =
+                date + " " + month;
+        }
+    }
+    </script>
+    <div onload="checkCookie()">
+        <bold>
+        <img id="image" style="float: right;"  style="width: 50px; height: 50px;" src="./Clerance Badge_files/topButton.png">
+        <h5 style="padding-left: 90px;">Clearance Status</h5> 
+        <h1>Cleared</h1> 
+        <h4>
+        <p id="date"></p>
+        </h4> 
+        <img id="image" src="./Clerance Badge_files/BADGEPHOYO.png">  
+        <h4>
+        <p id="name"></p>
+        <p id="dob"></p>
+        <p id="id"></p>
+        </h4>
+        <div width="250px" height="250px">                                                              
+            <button onclick="myFunction()"><img style="max-width: 200px;" src="./Clerance Badge_files/BADGEPHOYO.jpeg" id="image"></button> 
+        <h6>
+        This badge system is not applicable to employees                         
+        <br> <br> <br>
+        Compliant with Standard Requirements  
+        </h6>
+        </bold>
+    </div>
+</body>
+</html>
