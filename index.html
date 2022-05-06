@@ -1,6 +1,6 @@
+
 <html>
 <head>
-
     <style>
         body{
             background-color: 00cd46;
@@ -26,6 +26,9 @@
         button{
             background-color : inherit;
             border-color: transparent;
+        }
+        #cookieBox{
+            float:right
         }
         #textboxid
         {
@@ -55,33 +58,80 @@
     </style>
 </head>
 <body>
-    <div>
-        <bold>
-            <script>
-                function myFunction() {
-                  let person = prompt("Enter your name:", "Mike Wizoaski");
-                  if (person != null) {
-                    document.getElementById("name").innerHTML =
-                    person + " use they/them";
-                  }
-                  let DOB = prompt("Enter your DOB:", "Jan 12");
-                    if (DOB != null) {
-                        document.getElementById("dob").innerHTML =
-                        DOB + "";
+    <script>
+        function setCookie(cname,cvalue,exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays*24*60*60*1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for(let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                c = c.substring(1);
                 }
-                let date = prompt("Enter the date:", "6/7/2022");
-                    if (date != null) {
-                        document.getElementById("date").innerHTML =
-                        date + " 7:34 AM ";
-                }
-                let id = prompt("Enter your student ID:", "1820482");
-                    if (id != null) {
-                        document.getElementById("id").innerHTML =
-                        "#" + id + "";
+                if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
                 }
             }
-            </script>
-        <img id="image" style="float: right;"  style="width: 50px; height: 50px;" src="./Clerance Badge_files/topButton.png">
+            return "";
+        }
+        function checkCookie() {
+            let person = getCookie("username");
+            if (person != "") {
+                alert("This website uses cookies to save your name, id number, and dob for your convience. If you want to change your saved name, clear your cookies. Welcome back " + person);
+                document.getElementById("name").innerHTML =
+                person + " use they/them";
+            } else {
+                alert("This website uses cookies to save your name, id number, and dob for your convience. If you want to change your saved name, clear your cookies.");
+                person = prompt("Please enter your first & last name:","");
+                if (person != "" && person != null) {
+                setCookie("username", person, 30);
+                }
+            }
+            let DOB = getCookie("dob");
+            if (DOB != "") {
+                document.getElementById("dob").innerHTML =
+                DOB + "";
+            } else {
+                DOB = prompt("Enter your DOB:", "Jan 12");
+                if (DOB != "" && DOB != null) {
+                setCookie("dob", DOB, 30);
+                }
+            }
+            let ID = getCookie("id");
+            if (ID != "") {
+                document.getElementById("id").innerHTML =
+                "#" + ID;
+            } else {
+                ID = prompt("Enter your ID number:", "1823023");
+                if (ID != "" && ID != null) {
+                setCookie("id", ID, 30);
+                }
+            }
+            let date = prompt("Enter the date:", "6/7/2022");
+            if (date != null) {
+                document.getElementById("date").innerHTML =
+                date + " 7:12 AM";
+        }
+    }
+    function deleteAllCookies() {
+        var cookies = document.cookie.split(";");
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i];
+            var eqPos = cookie.indexOf("=");
+            var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+            document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+        }
+}
+    </script>
+    <div>
+        <bold>
+            <button id="cookieBox" onclick="deleteAllCookies()"><img style="float: right;"  style="width: 50px; height: 50px;" src="./Clerance Badge_files/topButton.png"></button> 
         <h5 style="padding-left: 90px;">Clearance Status</h5> 
         <h1>Cleared</h1> 
         <h4>
@@ -94,7 +144,7 @@
         <p id="id"></p>
         </h4>
         <div width="250px" height="250px">                                                              
-            <button onclick="myFunction()"><img style="max-width: 200px;" src="./Clerance Badge_files/BADGEPHOYO.jpeg" id="image"></button> 
+            <button onclick="checkCookie()"><img style="max-width: 200px;" src="./Clerance Badge_files/BADGEPHOYO.jpeg" id="image"></button> 
         <h6>
         This badge system is not applicable to employees                         
         <br> <br> <br>
